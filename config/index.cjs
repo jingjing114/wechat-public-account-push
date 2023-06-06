@@ -13,13 +13,19 @@ const USER_CONFIG = {
 
   // 使用微信测试号：公众号APP_SECRET
   APP_SECRET: "46a00a9082dc452b68425715c2e065e9",
+  
   // 默认所在省份, USERS 中没填的话, 会默认拿这里的省份
   PROVINCE: '四川',
+  
   // 默认所在城市, USERS 中没填的话, 会默认拿这里的城市
   CITY: '成都',
+  
   MAX_PUSH_ONE_MINUTE: 5,
+  
   SLEEP_TIME: 65000,
+  
   IS_SHOW_COLOR: true,
+  
    /** 每日一言 */
   // 每日一言的内容类型
   // 可以填写【动画，漫画，游戏，小说，原创，网络，其他】； 随机则填写 ""
@@ -106,14 +112,23 @@ const USER_CONFIG = {
     **/
     {
       name: "宝贝1",
+      
       id: "oMS0U5xbICm79oMq6LOBaTCMDams",
+      
       //useTemplateId: "z8r4iLgmjEXbfy2a3zUl6FlTK3It_6HHJr03_oasYUQ",
+      
       useTemplateId:"KWZt7ZCDkxNZhhEesQdPBDYbwFxgFtdg8197aHjFCjQ",
+      
       province: "四川",
-      city: "成都",
+      
+      city: "洪雅",
+      
       horoscopeDate: '11-15',
+      
       horoscopeDateType: '今日',
+      
       openUrl: "https://www.toutiao.com/?wid=1683253431525",
+      
       festivals: [
        {"type": "*生日", "name": "宝贝", "year": "1998", "date": "11-15", isShowAge: true},
    {"type": "*节日", "name": "过年啦", "date": "01-01"},
@@ -128,13 +143,21 @@ const USER_CONFIG = {
     },
      {
       name: "cxl",
+       
       id: "oMS0U5wO3Vxcwf3ZX4_yWlUz48oE",
+       
       useTemplateId:"KWZt7ZCDkxNZhhEesQdPBDYbwFxgFtdg8197aHjFCjQ",
+       
       province: "四川",
+       
       city: "成都",
+       
       horoscopeDate: '12-25',
+       
       horoscopeDateType: '今日',
-      openUrl: "https://wangxinleo.cn",
+       
+      openUrl: "https://www.toutiao.com/?wid=1683253431525",
+       
       festivals: [
        {"type": "*生日", "name": "宝贝", "year": "1998", "date": "11-15", isShowAge: true},
    {"type": "*节日", "name": "过年啦", "date": "01-01"},
@@ -174,13 +197,13 @@ const USER_CONFIG = {
 
 
   // 【推送完成提醒】模板id, 用来看自己有没有发送成功的那个模板
-  CALLBACK_TEMPLATE_ID: '',
+  CALLBACK_TEMPLATE_ID: 'DK1laTJ9Nq_r8zU0vZwwngDDf5cnrjK_-Dlb7Q7ADS8',
 
   CALLBACK_USERS: [
     {
       name: '自己',
       // 使用微信测试号：自己的微信id，扫码关注你的微信测试号后生成的一段字符串，在测试号后台能看到
-      id: '',
+      id: 'oMS0U5wO3Vxcwf3ZX4_yWlUz48oE',
     }
   ],
 
