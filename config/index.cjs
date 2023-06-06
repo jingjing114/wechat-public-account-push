@@ -119,7 +119,7 @@ const USER_CONFIG = {
       
       useTemplateId:"KWZt7ZCDkxNZhhEesQdPBDYbwFxgFtdg8197aHjFCjQ",
       
-      province: "四川",
+      province: "眉山",
       
       city: "洪雅县",
       
@@ -149,9 +149,9 @@ const USER_CONFIG = {
       //useTemplateId:"KWZt7ZCDkxNZhhEesQdPBDYbwFxgFtdg8197aHjFCjQ",
       useTemplateId:"Fuj3nHTJrqeiQxxeSn-54nLypXOjPBmrnaTAEcnMRlo",
        
-      province: "四川",
+      province: "眉山",
        
-      city: "成都",
+      city: "洪雅",
        
       horoscopeDate: '12-25',
        
