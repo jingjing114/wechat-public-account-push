@@ -146,7 +146,8 @@ const USER_CONFIG = {
        
       id: "oMS0U5wO3Vxcwf3ZX4_yWlUz48oE",
        
-      useTemplateId:"KWZt7ZCDkxNZhhEesQdPBDYbwFxgFtdg8197aHjFCjQ",
+      //useTemplateId:"KWZt7ZCDkxNZhhEesQdPBDYbwFxgFtdg8197aHjFCjQ",
+      useTemplateId:"Fuj3nHTJrqeiQxxeSn-54nLypXOjPBmrnaTAEcnMRlo",
        
       province: "四川",
        
