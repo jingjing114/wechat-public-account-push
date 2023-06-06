@@ -117,7 +117,7 @@ const USER_CONFIG = {
       
       //useTemplateId: "z8r4iLgmjEXbfy2a3zUl6FlTK3It_6HHJr03_oasYUQ",
       
-      useTemplateId:"oMO2RyRYxP6rlrcr_SSjAla6CQ3sF1StyBvg1nLxj28",
+      useTemplateId:"xGUmBqSFczrwThLV0MLE5AfoCObxUjrOy29yovlYfos",
       
       province: "眉山",
       
@@ -147,7 +147,7 @@ const USER_CONFIG = {
       id: "oMS0U5wO3Vxcwf3ZX4_yWlUz48oE",
        
       //useTemplateId:"KWZt7ZCDkxNZhhEesQdPBDYbwFxgFtdg8197aHjFCjQ",
-      useTemplateId:"oMO2RyRYxP6rlrcr_SSjAla6CQ3sF1StyBvg1nLxj28",
+      useTemplateId:"xGUmBqSFczrwThLV0MLE5AfoCObxUjrOy29yovlYfos",
        
       province: "四川",
        
@@ -174,7 +174,7 @@ const USER_CONFIG = {
       {
       name: "宝贝2",
       id: "oMS0U58g6PovLsUwnuJ-zUziyl3k",
-      useTemplateId: "oMO2RyRYxP6rlrcr_SSjAla6CQ3sF1StyBvg1nLxj28",
+      useTemplateId: "xGUmBqSFczrwThLV0MLE5AfoCObxUjrOy29yovlYfos",
       province: "四川",
       city: "广安",
       horoscopeDate: '11-15',
