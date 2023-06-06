@@ -45,7 +45,7 @@ const USER_CONFIG = {
     CIBA: false,
     
     // 每日一言, 填 false 则不使用，按需关闭不使用的功能可以提高运行速度
-    oneTalk: true,
+    oneTalk: false,
     
     // 土味情话(彩虹屁), 填 false 则不使用，按需关闭不使用的功能可以提高运行速度
     earthyLoveWords: false,
@@ -57,7 +57,7 @@ const USER_CONFIG = {
     poisonChickenSoup: false,
     
     // 古诗古文, 填 false 则不使用，按需关闭不使用的功能可以提高运行速度
-    poetry: false,
+    poetry: true,
 
     /** 星座运势 */
     // 填 false 则不使用，按需关闭不使用的功能可以提高运行速度
@@ -117,7 +117,7 @@ const USER_CONFIG = {
       
       //useTemplateId: "z8r4iLgmjEXbfy2a3zUl6FlTK3It_6HHJr03_oasYUQ",
       
-      useTemplateId:"xGUmBqSFczrwThLV0MLE5AfoCObxUjrOy29yovlYfos",
+      useTemplateId:"YUXi9fuFpK7S2UrbVnDJDIii8AL6ipOmi80gFSLrhNM",
       
       province: "眉山",
       
@@ -147,7 +147,7 @@ const USER_CONFIG = {
       id: "oMS0U5wO3Vxcwf3ZX4_yWlUz48oE",
        
       //useTemplateId:"KWZt7ZCDkxNZhhEesQdPBDYbwFxgFtdg8197aHjFCjQ",
-      useTemplateId:"xGUmBqSFczrwThLV0MLE5AfoCObxUjrOy29yovlYfos",
+      useTemplateId:"YUXi9fuFpK7S2UrbVnDJDIii8AL6ipOmi80gFSLrhNM",
        
       province: "四川",
        
@@ -174,7 +174,7 @@ const USER_CONFIG = {
       {
       name: "宝贝2",
       id: "oMS0U58g6PovLsUwnuJ-zUziyl3k",
-      useTemplateId: "xGUmBqSFczrwThLV0MLE5AfoCObxUjrOy29yovlYfos",
+      useTemplateId: "YUXi9fuFpK7S2UrbVnDJDIii8AL6ipOmi80gFSLrhNM",
       province: "四川",
       city: "广安",
       horoscopeDate: '11-15',
