@@ -121,7 +121,7 @@ const USER_CONFIG = {
       
       province: "四川",
       
-      city: "洪雅",
+      city: "洪雅县",
       
       horoscopeDate: '11-15',
       
