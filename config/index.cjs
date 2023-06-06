@@ -110,7 +110,7 @@ const USER_CONFIG = {
       //useTemplateId: "z8r4iLgmjEXbfy2a3zUl6FlTK3It_6HHJr03_oasYUQ",
       useTemplateId:"KWZt7ZCDkxNZhhEesQdPBDYbwFxgFtdg8197aHjFCjQ",
       province: "四川",
-      city: "洪雅",
+      city: "成都",
       horoscopeDate: '11-15',
       horoscopeDateType: '今日',
       openUrl: "https://www.toutiao.com/?wid=1683253431525",
