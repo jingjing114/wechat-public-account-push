@@ -42,16 +42,16 @@ const USER_CONFIG = {
 
     /** 每日N句 */
     // 金山每日一句, 填 false 则不使用，按需关闭不使用的功能可以提高运行速度
-    CIBA: true,
+    CIBA: false,
     
     // 每日一言, 填 false 则不使用，按需关闭不使用的功能可以提高运行速度
     oneTalk: true,
     
     // 土味情话(彩虹屁), 填 false 则不使用，按需关闭不使用的功能可以提高运行速度
-    earthyLoveWords: true,
+    earthyLoveWords: false,
     
     // 朋友圈文案, 填 false 则不使用，按需关闭不使用的功能可以提高运行速度
-    momentCopyrighting: true,
+    momentCopyrighting: false,
     
     // 毒鸡汤, 填 false 则不使用，按需关闭不使用的功能可以提高运行速度
     poisonChickenSoup: false,
@@ -117,7 +117,7 @@ const USER_CONFIG = {
       
       //useTemplateId: "z8r4iLgmjEXbfy2a3zUl6FlTK3It_6HHJr03_oasYUQ",
       
-      useTemplateId:"nsgVEeEVLcEOd9Lt-dZ9AKbrIzd0CAr9IrZdKOLbbVY",
+      useTemplateId:"oMO2RyRYxP6rlrcr_SSjAla6CQ3sF1StyBvg1nLxj28",
       
       province: "眉山",
       
@@ -147,11 +147,11 @@ const USER_CONFIG = {
       id: "oMS0U5wO3Vxcwf3ZX4_yWlUz48oE",
        
       //useTemplateId:"KWZt7ZCDkxNZhhEesQdPBDYbwFxgFtdg8197aHjFCjQ",
-      useTemplateId:"nsgVEeEVLcEOd9Lt-dZ9AKbrIzd0CAr9IrZdKOLbbVY",
+      useTemplateId:"oMO2RyRYxP6rlrcr_SSjAla6CQ3sF1StyBvg1nLxj28",
        
-      province: "眉山",
+      province: "四川",
        
-      city: "洪雅",
+      city: "成都",
        
       horoscopeDate: '12-25',
        
@@ -174,7 +174,7 @@ const USER_CONFIG = {
       {
       name: "宝贝2",
       id: "oMS0U58g6PovLsUwnuJ-zUziyl3k",
-      useTemplateId: "z8r4iLgmjEXbfy2a3zUl6FlTK3It_6HHJr03_oasYUQ",
+      useTemplateId: "oMO2RyRYxP6rlrcr_SSjAla6CQ3sF1StyBvg1nLxj28",
       province: "四川",
       city: "广安",
       horoscopeDate: '11-15',
