@@ -129,7 +129,7 @@ const USER_CONFIG = {
      {
       name: "cxl",
       id: "oMS0U5wO3Vxcwf3ZX4_yWlUz48oE",
-      useTemplateId:"_2Pa55VvWWlGMymHpviIKvga9C2-ql0SlsVr22JGvmI",
+      useTemplateId:"KWZt7ZCDkxNZhhEesQdPBDYbwFxgFtdg8197aHjFCjQ",
       province: "四川",
       city: "成都",
       horoscopeDate: '12-25',
