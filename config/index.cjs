@@ -149,9 +149,9 @@ const USER_CONFIG = {
       //useTemplateId:"KWZt7ZCDkxNZhhEesQdPBDYbwFxgFtdg8197aHjFCjQ",
       useTemplateId:"YUXi9fuFpK7S2UrbVnDJDIii8AL6ipOmi80gFSLrhNM",
        
-      province: "阿坝",
+      province: "四川",
        
-      city: "小金县",
+      city: "成都",
        
       horoscopeDate: '12-25',
        
