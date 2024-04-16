@@ -139,7 +139,7 @@ const USER_CONFIG = {
     {"type": "*节日", "name": "中秋节", "date": "08-15"},
     {"type": "节日", "name": "劳动节", "date": "05-01"},
     {"type": "*节日", "name": "七夕", "date": "07-07"},
-      {"type": "*节日", "name": "七夕", "date": "10-05"},
+      {"type": "*节日", "name": "结婚啦", "year":"2024", "date": "10-05"},
      ],
       customizedDateList: [
       {"keyword": "love_day", date: "2021-03-24"},
@@ -173,7 +173,7 @@ const USER_CONFIG = {
       {"type": "*节日", "name": "中秋节", "date": "08-15"},
     {"type": "节日", "name": "劳动节", "date": "05-01"},
     {"type": "*节日", "name": "七夕", "date": "07-07"},
-              {"type": "*节日", "name": "七夕", "date": "10-05"},
+      {"type": "*节日", "name": "结婚啦", "year":"2024", "date": "10-05"},
      ],
       customizedDateList: [
       {"keyword": "love_day", date: "2021-03-24"},
@@ -198,7 +198,7 @@ const USER_CONFIG = {
         {"type": "*节日", "name": "中秋节", "date": "08-15"},
     {"type": "节日", "name": "劳动节", "date": "05-01"},
     {"type": "*节日", "name": "七夕", "date": "07-07"},
-              {"type": "*节日", "name": "七夕", "date": "10-05"},
+      {"type": "*节日", "name": "结婚啦", "year":"2024", "date": "10-05"},
      ],
       customizedDateList: [
       {"keyword": "love_day", date: "2021-03-24"},
