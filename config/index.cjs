@@ -150,8 +150,9 @@ const USER_CONFIG = {
        
       id: "oMS0U5wO3Vxcwf3ZX4_yWlUz48oE",
        
-      //useTemplateId:"KWZt7ZCDkxNZhhEesQdPBDYbwFxgFtdg8197aHjFCjQ",
-      useTemplateId:"YUXi9fuFpK7S2UrbVnDJDIii8AL6ipOmi80gFSLrhNM",
+      useTemplateId:"15539pwRKmoj1N7WVxeCKgCkyXDlAG_cE4f7tN4vOIM",
+      //useTemplateId:"YUXi9fuFpK7S2UrbVnDJDIii8AL6ipOmi80gFSLrhNM",
+       
        
       province: "四川",
        
@@ -177,6 +178,7 @@ const USER_CONFIG = {
      ],
       customizedDateList: [
       {"keyword": "love_day", date: "2021-03-24"},
+      {"keyword": "marry_day", date: "2024-10-05"},
       ]
     },
       {
