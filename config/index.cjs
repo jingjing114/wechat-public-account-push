@@ -143,6 +143,7 @@ const USER_CONFIG = {
      ],
       customizedDateList: [
       {"keyword": "love_day", date: "2021-03-24"},
+        {"keyword": "marry_day", date: "2024-10-05"},
       ]
     },
      {
@@ -204,6 +205,7 @@ const USER_CONFIG = {
      ],
       customizedDateList: [
       {"keyword": "love_day", date: "2021-03-24"},
+        {"keyword": "marry_day", date: "2024-10-05"},
       ]
     },
     // 你可以不断按格式往下增加
