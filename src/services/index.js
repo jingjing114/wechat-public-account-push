@@ -100,7 +100,7 @@ export const getWeatherIcon = (weather) => {
  * @param {*} city 城市
  * @param {*} county 地区
  */
-export const getWeather = async (province, city, county) => {
+export const getWeather = async (province, city) => {
   if (config.SWITCH && config.SWITCH.weather === false) {
     return {}
   }
@@ -119,9 +119,9 @@ export const getWeather = async (province, city, county) => {
   //const url = `http://t.weather.itboy.net/api/weather/city/${cityInfo.city_code}`
   const province1 = encodeURIComponent(province);
   const city1 = encodeURIComponent(city);
-  console.log(county)
-  const county1 = encodeURIComponent(county);
-  const url = `https://wis.qq.com/weather/common?source=pc&weather_type=observe&province=${province1}&city=${city1}&county=${county1}`
+  //console.log(county)
+  //const county1 = encodeURIComponent(county);
+  const url = `https://wis.qq.com/weather/common?source=pc&weather_type=observe&province=${province1}&city=${city1}`
 
   const res = await axios.get(url, {
     headers: {
