@@ -98,8 +98,9 @@ export const getWeatherIcon = (weather) => {
  * 获取天气情况
  * @param {*} province 省份
  * @param {*} city 城市
+ * @param {*} county 地区
  */
-export const getWeather = async (province, city) => {
+export const getWeather = async (province, city, county) => {
   if (config.SWITCH && config.SWITCH.weather === false) {
     return {}
   }
@@ -110,12 +111,14 @@ export const getWeather = async (province, city) => {
     return RUN_TIME_STORAGE[`${province}_${city}`]
   }
 
-  const cityInfo = getWeatherCityInfo(province, city)
+  /*const cityInfo = getWeatherCityInfo(province, city)
   if (!cityInfo) {
     console.error('配置文件中找不到相应的省份或城市')
     return {}
-  }
-  const url = `http://t.weather.itboy.net/api/weather/city/${cityInfo.city_code}`
+  }*/
+  //const url = `http://t.weather.itboy.net/api/weather/city/${cityInfo.city_code}`
+  const cityInfo=
+  const url = `https://wis.qq.com/weather/common?source=pc&weather_type=observe&province=urlencode($province)&city=urlencode($city)&county=urlencode($county）`
 
   const res = await axios.get(url, {
     headers: {
@@ -123,15 +126,30 @@ export const getWeather = async (province, city) => {
     },
   }).catch((err) => err)
 
-  if (res.status === 200 && res.data && res.data.status === 200) {
-    const commonInfo = res.data.data
-    const info = commonInfo && commonInfo.forecast && commonInfo.forecast[0]
+  //if (res.status === 200 && res.data && res.data.status === 200) {
+  if (res.status === 200 && res.data) {
+    const commonInfo = res.data
+   //const info = commonInfo && commonInfo.forecast && commonInfo.forecast[0]
+   const info = commonInfo
     if (!info) {
       console.error('天气情况: 找不到天气信息, 获取失败')
       return {}
     }
-
     const result = {
+      //湿度
+      shidu: commonInfo.humidity,
+      //天气
+      weather: commonInfo.weather,
+      //风向
+      windScale: commonInfo.wind_direction_name,
+      //风级
+      windDirection: commonInfo.wind_power,
+      //最高温度
+      maxTemperature: commonInfo.degree(/^高温\s*/, ''),
+      //最低温度
+      minTemperature: commonInfo.degree(/^低温\s*/, ''),
+    }
+   /*const result = {
       // 湿度
       shidu: commonInfo.shidu,
       // PM2.5
@@ -160,7 +178,7 @@ export const getWeather = async (province, city) => {
       windScale: info.fl,
       // 温馨提示
       notice: info.notice,
-    }
+    }*/
 
     RUN_TIME_STORAGE[`${province}_${city}`] = cloneDeep(result)
 
