@@ -131,7 +131,7 @@ export const getWeather = async (province, city) => {
   console.log(res)
   //if (res.status === 200 && res.data && res.data.status === 200) {
   if (res.status === 200 && res.data) {
-    const commonInfo = res.data
+    const commonInfo = res.data.observe
     console.log(commonInfo)
     //const info = commonInfo && commonInfo.forecast && commonInfo.forecast[0]
     const info = commonInfo
