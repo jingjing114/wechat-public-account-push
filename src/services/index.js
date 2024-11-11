@@ -128,9 +128,11 @@ export const getWeather = async (province, city) => {
       'Content-Type': 'application/json',
     },
   }).catch((err) => err)
+  console.log('11111111111111111111111111')
   console.log(res)
+  console.log(res.data.observe)
   //if (res.status === 200 && res.data && res.data.status === 200) {
-  if (res.status === 200 && res.data) {
+  if (res.status === 200 && res.data.observe) {
     const commonInfo = res.data.observe
     console.log(commonInfo)
     //const info = commonInfo && commonInfo.forecast && commonInfo.forecast[0]
