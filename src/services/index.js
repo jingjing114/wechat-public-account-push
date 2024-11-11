@@ -123,32 +123,22 @@ export const getWeather = async (province, city) => {
   //const county1 = encodeURIComponent(county);
   const url = `https://wis.qq.com/weather/common?source=pc&weather_type=observe&province=${province1}&city=${city1}`
 
-  // const res = await axios.get(url, {
-  //   headers: {
-  //     'Content-Type': 'application/json',
-  //   },
-  // }).catch((err) => err)
-  try {
-    const res = await axios.get(url);
-    console.log('Response:', res);
-    console.log('Response:', res.data.observe);
-    //return res.data.observe; // 直接返回 observe 数据
-  } catch (err) {
-    console.error('Error fetching weather data:', err);
-    //return err; // 或者您可以选择返回错误对象或错误信息
-  }
-  };
-  
+  const res = await axios.get(url, {
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  }).catch((err) => err)
+  console.log(res)
   //if (res.status === 200 && res.data && res.data.status === 200) {
   if (res.status === 200 && res.data.observe) {
     const commonInfo = res.data.observe
     console.log(commonInfo)
     //const info = commonInfo && commonInfo.forecast && commonInfo.forecast[0]
     const info = commonInfo
-    // if (!info) {
-    //   console.error('天气情况: 找不到天气信息, 获取失败')
-    //   return {}
-    // }
+    if (!info) {
+      console.error('天气情况: 找不到天气信息, 获取失败')
+      return {}
+    }
     const result = {
       //湿度
       shidu: commonInfo.humidity,
