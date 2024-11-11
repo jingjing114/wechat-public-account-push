@@ -158,6 +158,7 @@ const USER_CONFIG = {
       province: "四川",
        
       city: "成都",
+      county:"双流区",
        
       horoscopeDate: '12-25',
        
