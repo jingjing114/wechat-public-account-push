@@ -123,17 +123,14 @@ export const getWeather = async (province, city) => {
   //const county1 = encodeURIComponent(county);
   const url = `https://wis.qq.com/weather/common?source=pc&weather_type=observe&province=${province1}&city=${city1}`
 
-  // const res = await axios.get(url, {
-  //   headers: {
-  //     'Content-Type': 'application/json',
-  //   },
-  // }).catch((err) => err)
-  const res = await axios.get(url);
-  console.log('1111111111111111111112222222222222222222222222222222')
-  console.log(res.data)
-  //if (res.status === 200 && res.data && res.data.status === 200) {
-  if (res.status === 200 && res.data.observe) {
-    const commonInfo = res.data.observe
+  const res = await axios.get(url, {
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  }).catch((err) => err)
+
+  if (res.status === 200 && res.data && res.data.status === 200) {
+    const commonInfo = res.data.data.observe
     console.log(commonInfo)
     //const info = commonInfo && commonInfo.forecast && commonInfo.forecast[0]
     const info = commonInfo
