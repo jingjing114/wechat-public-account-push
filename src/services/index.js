@@ -118,7 +118,7 @@ export const getWeather = async (province, city, county) => {
   }*/
   //const url = `http://t.weather.itboy.net/api/weather/city/${cityInfo.city_code}`
   const cityInfo=
-  const url = `https://wis.qq.com/weather/common?source=pc&weather_type=observe&province=urlencode($province)&city=urlencode($city)&county=urlencode($county）`
+  const url = `https://wis.qq.com/weather/common?source=pc&weather_type=observe&province=urlencode($province)&city=urlencode($city)&county=urlencode($county)`
 
   const res = await axios.get(url, {
     headers: {
