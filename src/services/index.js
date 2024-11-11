@@ -131,10 +131,11 @@ export const getWeather = async (province, city) => {
   try {
     const res = await axios.get(url);
     console.log('Response:', res);
-    return res.data.observe; // 直接返回 observe 数据
+    console.log('Response:', res.data.observe);
+    //return res.data.observe; // 直接返回 observe 数据
   } catch (err) {
     console.error('Error fetching weather data:', err);
-    return err; // 或者您可以选择返回错误对象或错误信息
+    //return err; // 或者您可以选择返回错误对象或错误信息
   }
   };
   
@@ -146,7 +147,7 @@ export const getWeather = async (province, city) => {
     const info = commonInfo
     if (!info) {
       console.error('天气情况: 找不到天气信息, 获取失败')
-      //return {}
+      return {}
     }
     const result = {
       //湿度
