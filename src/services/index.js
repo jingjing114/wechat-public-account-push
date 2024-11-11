@@ -146,7 +146,7 @@ export const getWeather = async (province, city) => {
     const info = commonInfo
     if (!info) {
       console.error('天气情况: 找不到天气信息, 获取失败')
-      return {}
+      //return {}
     }
     const result = {
       //湿度
