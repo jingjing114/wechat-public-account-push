@@ -119,9 +119,9 @@ const USER_CONFIG = {
       
       //useTemplateId:"3z0GiIHi6n62MA8KZvEwzq4OIgkxhCTDFGR3io12KRo",
       
-      province: "眉山",
-      
-      city: "洪雅县",
+      province: "四川",
+      city:"眉山",
+      county: "洪雅县",
       
       horoscopeDate: '11-15',
       
@@ -189,6 +189,7 @@ const USER_CONFIG = {
       useTemplateId: "2IPUBm9NI62_W7G7sVZdGakGcFSMCB-6I_NTcgw4N4M",
       province: "四川",
       city: "广安",
+      county:"广安区",
       horoscopeDate: '11-15',
       horoscopeDateType: '今日',
       openUrl: "https://www.toutiao.com/?wid=1683253431525",
