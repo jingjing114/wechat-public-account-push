@@ -149,9 +149,9 @@ export const getWeather = async (province, city) => {
       //风级
       windDirection: commonInfo.wind_power,
       //最高温度
-      maxTemperature: commonInfo.degree(/^高温\s*/, ''),
+      maxTemperature: commonInfo.degree,
       //最低温度
-      minTemperature: commonInfo.degree(/^低温\s*/, ''),
+      minTemperature: commonInfo.degree,
     }
    /*const result = {
       // 湿度
