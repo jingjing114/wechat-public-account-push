@@ -129,6 +129,7 @@ export const getWeather = async (province, city) => {
   //   },
   // }).catch((err) => err)
   const res = await axios.get(url);
+    console.log('1111111111111111111112222222222222222222222222222222')
   console.log(res)
   //if (res.status === 200 && res.data && res.data.status === 200) {
   if (res.status === 200 && res.data.observe) {
