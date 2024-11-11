@@ -127,13 +127,13 @@ export const getWeather = async (province, city, county) => {
       'Content-Type': 'application/json',
     },
   }).catch((err) => err)
-
+  console.log(response.data);
   //if (res.status === 200 && res.data && res.data.status === 200) {
   if (res.status === 200 && res.data) {
     const commonInfo = res.data
     console.log(commonInfo)
-   //const info = commonInfo && commonInfo.forecast && commonInfo.forecast[0]
-   const info = commonInfo
+    //const info = commonInfo && commonInfo.forecast && commonInfo.forecast[0]
+    const info = commonInfo
     if (!info) {
       console.error('天气情况: 找不到天气信息, 获取失败')
       return {}
