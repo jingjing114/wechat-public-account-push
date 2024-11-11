@@ -123,14 +123,21 @@ export const getWeather = async (province, city) => {
   //const county1 = encodeURIComponent(county);
   const url = `https://wis.qq.com/weather/common?source=pc&weather_type=observe&province=${province1}&city=${city1}`
 
-  const res = await axios.get(url, {
-    headers: {
-      'Content-Type': 'application/json',
-    },
-  }).catch((err) => err)
-  console.log('11111111111111111111111111')
-  console.log(res)
-  console.log(res.data.observe)
+  // const res = await axios.get(url, {
+  //   headers: {
+  //     'Content-Type': 'application/json',
+  //   },
+  // }).catch((err) => err)
+  try {
+    const res = await axios.get(url);
+    console.log('Response:', res);
+    return res.data.observe; // 直接返回 observe 数据
+  } catch (err) {
+    console.error('Error fetching weather data:', err);
+    return err; // 或者您可以选择返回错误对象或错误信息
+  }
+  };
+  
   //if (res.status === 200 && res.data && res.data.status === 200) {
   if (res.status === 200 && res.data.observe) {
     const commonInfo = res.data.observe
