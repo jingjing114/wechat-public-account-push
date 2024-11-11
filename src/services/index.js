@@ -173,7 +173,8 @@ export const getWeather = async (province, city, county) => {
       // 最高温度
       maxTemperature: info.high.replace(/^高温\s*/, ''),
       // 最低温度
-      minTemperature: info.low.replace(/^低温\s*/, ''),
+      //minTemperature: info.low.replace(/^低温\s*/, ''),
+      /*
       // 风向
       windDirection: info.fx,
       // 风力等级
