@@ -145,10 +145,10 @@ export const getWeather = async (province, city) => {
     console.log(commonInfo)
     //const info = commonInfo && commonInfo.forecast && commonInfo.forecast[0]
     const info = commonInfo
-    if (!info) {
-      console.error('天气情况: 找不到天气信息, 获取失败')
-      return {}
-    }
+    // if (!info) {
+    //   console.error('天气情况: 找不到天气信息, 获取失败')
+    //   return {}
+    // }
     const result = {
       //湿度
       shidu: commonInfo.humidity,
