@@ -117,10 +117,10 @@ export const getWeather = async (province, city, county) => {
     return {}
   }*/
   //const url = `http://t.weather.itboy.net/api/weather/city/${cityInfo.city_code}`
-  const province1 = encodeLocationParams({province})
+  /*const province1 = encodeLocationParams({province})
   const city1 = encodeLocationParams({city})
-  const county1 = encodeLocationParams({county})
-  const url = `https://wis.qq.com/weather/common?source=pc&weather_type=observe&province=${province1}&city=${city1}&county=${county1}`
+  const county1 = encodeLocationParams({county})*/
+  const url = `https://wis.qq.com/weather/common?source=pc&weather_type=observe&province=${province}&city=${city}&county=${county}`
 
   const res = await axios.get(url, {
     headers: {
