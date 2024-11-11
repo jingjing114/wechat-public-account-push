@@ -170,10 +170,10 @@ export const getWeather = async (province, city, county) => {
       aqi: info.aqi,
       // 天气情况
       weather: info.type,
-      // 最高温度
-      maxTemperature: info.high.replace(/^高温\s*/, ''),
-      // 最低温度
-      //minTemperature: info.low.replace(/^低温\s*/, ''),
+      // 最高温度*/
+      //maxTemperature: info.high.replace(/^高温\s, ''),
+      // 最低温度,删除了斜杠*
+      //minTemperature: info.low.replace(/^低温\s, ''),
       /*
       // 风向
       windDirection: info.fx,
