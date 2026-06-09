@@ -254,36 +254,86 @@ export const getHolidaytts = async () => {
   }
 
   const year = new Date().getFullYear()
-  const url = `https://timor.tech/api/holiday/year/${year}`
-  const res = await axios.get(url).catch((err) => err)
   let data = DEFAULT_OUTPUT.holidaytts
 
-  if (res.status === 200 && res.data && res.data.code === 0) {
-    const holidays = res.data.holiday
-    const today = dayjs().format('YYYY-MM-DD')
-    let nextHoliday = null
-    let minDiff = Infinity
+  // 方式一：timor.tech API（优先使用，数据最全）
+  try {
+    const timorUrl = `https://timor.tech/api/holiday/year/${year}`
+    const res = await axios.get(timorUrl, { timeout: 8000 }).catch((err) => err)
+    if (res.status === 200 && res.data && res.data.code === 0) {
+      const holidays = res.data.holiday
+      const today = dayjs().format('YYYY-MM-DD')
+      let nextHoliday = null
+      let minDiff = Infinity
 
-    Object.keys(holidays).forEach((key) => {
-      const holiday = holidays[key]
-      const diff = dayjs(holiday.date).diff(dayjs(today), 'day')
-      if (diff >= 0 && diff < minDiff) {
-        minDiff = diff
-        nextHoliday = holiday
-      }
-    })
+      Object.keys(holidays).forEach((key) => {
+        const holiday = holidays[key]
+        // 只取真正的节假日首日（holiday === true 且 name 不含"补班"）
+        if (holiday.holiday === true && !holiday.name.includes('补班') && !holiday.name.includes('除夕')) {
+          const diff = dayjs(holiday.date).diff(dayjs(today), 'day')
+          if (diff >= 0 && diff < minDiff) {
+            minDiff = diff
+            nextHoliday = holiday
+          }
+        }
+      })
 
-    if (nextHoliday) {
-      if (minDiff === 0) {
-        data = `今天是 ${nextHoliday.name}！休息 ${nextHoliday.rest} 天`
-      } else {
-        data = `距离 ${nextHoliday.name} 还有 ${minDiff} 天`
+      if (nextHoliday) {
+        console.log('节假日API(天行): 找到下个休息日', nextHoliday)
+        if (minDiff === 0) {
+          data = `今天是 ${nextHoliday.name}！`
+        } else {
+          data = `距离 ${nextHoliday.name} 还有 ${minDiff} 天`
+        }
+        // 成功获取，跳过备用API
+        return formatHolidayResult(data)
       }
     }
-  } else {
-    console.error('获取下一休息日: 发生错误', res)
+    console.error('timor.tech 未返回有效节假日数据，尝试备用 API...', res.data || res)
+  } catch (e) {
+    console.error('timor.tech 请求失败，尝试备用 API...', e.message)
   }
 
+  // 方式二：Nager.Date API（备用）
+  try {
+    const nagerUrl = `https://date.nager.at/api/v3/publicholidays/${year}/CN`
+    const nagerRes = await axios.get(nagerUrl, { timeout: 8000 }).catch((err) => err)
+    if (nagerRes.status === 200 && Array.isArray(nagerRes.data) && nagerRes.data.length > 0) {
+      const today = dayjs()
+      const holidays = nagerRes.data
+      let nextHoliday = null
+      let minDiff = Infinity
+
+      holidays.forEach((holiday) => {
+        const diff = dayjs(holiday.date).diff(today, 'day')
+        if (diff >= 0 && diff < minDiff) {
+          minDiff = diff
+          nextHoliday = holiday
+        }
+      })
+
+      if (nextHoliday) {
+        console.log('节假日API(Nager): 找到下个休息日', nextHoliday)
+        if (minDiff === 0) {
+          data = `今天是 ${nextHoliday.localName}！`
+        } else {
+          data = `距离 ${nextHoliday.localName} 还有 ${minDiff} 天`
+        }
+      }
+    } else {
+      console.error('Nager.Date 未返回有效数据', nagerRes.data || nagerRes)
+    }
+  } catch (e) {
+    console.error('Nager.Date 请求失败', e.message)
+  }
+
+  return formatHolidayResult(data)
+}
+
+/**
+ * 格式化节假日返回结果
+ */
+function formatHolidayResult(data) {
   const arr = []
   for (let j = 0, i = 0; j < data.length; j += 20) {
     arr.push({
