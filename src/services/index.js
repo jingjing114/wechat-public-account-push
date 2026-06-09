@@ -119,38 +119,43 @@ export const getWeather = async (province, city) => {
   //const url = `http://t.weather.itboy.net/api/weather/city/${cityInfo.city_code}`
   const province1 = encodeURIComponent(province);
   const city1 = encodeURIComponent(city);
-  //console.log(county)
-  //const county1 = encodeURIComponent(county);
-  const url = `https://wis.qq.com/weather/common?source=pc&weather_type=observe&province=${province1}&city=${city1}`
 
-  const res = await axios.get(url, {
-    headers: {
-      'Content-Type': 'application/json',
-    },
-  }).catch((err) => err)
+  // 请求实时观测数据（天气状况、风向风力等）
+  const observeUrl = `https://wis.qq.com/weather/common?source=pc&weather_type=observe&province=${province1}&city=${city1}`
+  // 请求预报数据（包含最高/最低气温）
+  const forecastUrl = `https://wis.qq.com/weather/common?source=pc&weather_type=forecast_24h&province=${province1}&city=${city1}`
 
-  if (res.status === 200 && res.data && res.data.status === 200) {
-    const commonInfo = res.data.data.observe
-    console.log(commonInfo)
-    //const info = commonInfo && commonInfo.forecast && commonInfo.forecast[0]
-    const info = commonInfo
-    if (!info) {
+  const [observeRes, forecastRes] = await Promise.all([
+    axios.get(observeUrl, { headers: { 'Content-Type': 'application/json' } }).catch((err) => err),
+    axios.get(forecastUrl, { headers: { 'Content-Type': 'application/json' } }).catch((err) => err),
+  ])
+
+  if (observeRes.status === 200 && observeRes.data && observeRes.data.status === 200) {
+    const observeInfo = observeRes.data.data.observe
+    // 从预报数据中获取今日最高/最低温度
+    let forecastInfo = null
+    if (forecastRes.status === 200 && forecastRes.data && forecastRes.data.status === 200) {
+      forecastInfo = forecastRes.data.data.forecast_24h && forecastRes.data.data.forecast_24h[0]
+    }
+    console.log('实时天气:', observeInfo)
+    console.log('今日预报:', forecastInfo)
+    if (!observeInfo) {
       console.error('天气情况: 找不到天气信息, 获取失败')
       return {}
     }
     const result = {
       //湿度
-      shidu: commonInfo.humidity,
+      shidu: observeInfo.humidity,
       //天气
-      weather: commonInfo.weather,
+      weather: observeInfo.weather,
       //风向
-      windDirection: commonInfo.wind_direction_name,
+      windDirection: observeInfo.wind_direction_name,
       //风级
-      windScale: commonInfo.wind_power,
-      //最高温度
-      maxTemperature: commonInfo.degree,
-      //最低温度
-      minTemperature: commonInfo.degree,
+      windScale: observeInfo.wind_power,
+      //最高温度（从预报数据取，如果没有则回退到当前温度）
+      maxTemperature: (forecastInfo && forecastInfo.max_degree) || observeInfo.degree,
+      //最低温度（从预报数据取，如果没有则回退到当前温度）
+      minTemperature: (forecastInfo && forecastInfo.min_degree) || observeInfo.degree,
     }
    /*const result = {
       // 湿度
@@ -248,14 +253,35 @@ export const getHolidaytts = async () => {
     return null
   }
 
-  const url = 'https://wangxinleo.cn/api/wx-push/holiday/getHolidaytts'
+  const year = new Date().getFullYear()
+  const url = `https://timor.tech/api/holiday/year/${year}`
   const res = await axios.get(url).catch((err) => err)
   let data = DEFAULT_OUTPUT.holidaytts
 
   if (res.status === 200 && res.data && res.data.code === 0) {
-    data = res.data.tts
+    const holidays = res.data.holiday
+    const today = dayjs().format('YYYY-MM-DD')
+    let nextHoliday = null
+    let minDiff = Infinity
+
+    Object.keys(holidays).forEach((key) => {
+      const holiday = holidays[key]
+      const diff = dayjs(holiday.date).diff(dayjs(today), 'day')
+      if (diff >= 0 && diff < minDiff) {
+        minDiff = diff
+        nextHoliday = holiday
+      }
+    })
+
+    if (nextHoliday) {
+      if (minDiff === 0) {
+        data = `今天是 ${nextHoliday.name}！休息 ${nextHoliday.rest} 天`
+      } else {
+        data = `距离 ${nextHoliday.name} 还有 ${minDiff} 天`
+      }
+    }
   } else {
-    console.error('获取下一休息日tts: 发生错误', res)
+    console.error('获取下一休息日: 发生错误', res)
   }
 
   const arr = []

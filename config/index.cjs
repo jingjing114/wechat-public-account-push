@@ -48,7 +48,7 @@ const USER_CONFIG = {
     oneTalk: false,
     
     // 土味情话(彩虹屁), 填 false 则不使用，按需关闭不使用的功能可以提高运行速度
-    earthyLoveWords: false,
+    earthyLoveWords: true,
     
     // 朋友圈文案, 填 false 则不使用，按需关闭不使用的功能可以提高运行速度
     momentCopyrighting: false,
