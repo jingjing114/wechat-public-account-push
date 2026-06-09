@@ -1027,6 +1027,8 @@ export const getAggregatedData = async () => {
       { name: toLowerLine('poetryDynasty'), value: poetryDynasty, color: getColor() },
       { name: toLowerLine('poetryTitle'), value: poetryTitle, color: getColor() },
       { name: toLowerLine('courseSchedule'), value: courseSchedule, color: getColor() },
+      // 宝宝寄语（使用土味情话 → 每日一言 → 金山词霸 依次填充）
+      { name: 'notice', value: earthyLoveWords || noteCh || oneTalk || momentCopyrighting || '愿你每天都开心！', color: getColor() },
     ].concat(weatherMessage)
       .concat(constellationFortune)
       .concat(dateDiffParams)
