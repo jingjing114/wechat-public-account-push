@@ -248,6 +248,29 @@ export const getCIBA = async () => {
  * 获取下一休息日tts
  * @returns
  */
+const HOLIDAY_GREETINGS = {
+  '元旦': '🎉 宝宝元旦快乐！',
+  '春节': '🎉 宝宝春节快乐！',
+  '清明节': '🌿 清明安康',
+  '劳动节': '🎉 劳动节快乐！',
+  '端午节': '🥟 宝宝端午安康！',
+  '中秋节': '🌙 宝宝中秋快乐！',
+  '国庆节': '🎊 国庆节快乐！',
+}
+
+/**
+ * 根据节假日名称获取祝福语
+ */
+const getHolidayGreeting = (name) => {
+  // 匹配节假日名称，如 "端午节"、"国庆节" 等
+  for (const [key, greeting] of Object.entries(HOLIDAY_GREETINGS)) {
+    if (name.includes(key)) {
+      return greeting
+    }
+  }
+  return ''
+}
+
 export const getHolidaytts = async () => {
   if (config.SWITCH && config.SWITCH.holidaytts === false) {
     return null
@@ -262,7 +285,8 @@ export const getHolidaytts = async () => {
     const res = await axios.get(timorUrl, { timeout: 8000 }).catch((err) => err)
     if (res.status === 200 && res.data && res.data.code === 0) {
       const holidays = res.data.holiday
-      const today = dayjs().format('YYYY-MM-DD')
+      // 使用 selfDayjs 获取北京时间，避免 GitHub Actions UTC 时区差一天的问题
+      const today = selfDayjs().format('YYYY-MM-DD')
       let nextHoliday = null
       let minDiff = Infinity
 
@@ -280,10 +304,15 @@ export const getHolidaytts = async () => {
 
       if (nextHoliday) {
         console.log('节假日API(天行): 找到下个休息日', nextHoliday)
+        const greeting = getHolidayGreeting(nextHoliday.name)
         if (minDiff === 0) {
-          data = `今天是 ${nextHoliday.name}！`
+          data = `今天是 ${nextHoliday.name}！${greeting}`
         } else {
           data = `距离 ${nextHoliday.name} 还有 ${minDiff} 天`
+          // 节日当天或前一天加上祝福语
+          if (minDiff <= 3 && greeting) {
+            data += `  ${greeting}`
+          }
         }
         // 成功获取，跳过备用API
         return formatHolidayResult(data)
@@ -299,13 +328,13 @@ export const getHolidaytts = async () => {
     const nagerUrl = `https://date.nager.at/api/v3/publicholidays/${year}/CN`
     const nagerRes = await axios.get(nagerUrl, { timeout: 8000 }).catch((err) => err)
     if (nagerRes.status === 200 && Array.isArray(nagerRes.data) && nagerRes.data.length > 0) {
-      const today = dayjs()
+      const today = selfDayjs().format('YYYY-MM-DD')  // 使用北京时间日期字符串
       const holidays = nagerRes.data
       let nextHoliday = null
       let minDiff = Infinity
 
       holidays.forEach((holiday) => {
-        const diff = dayjs(holiday.date).diff(today, 'day')
+        const diff = dayjs(holiday.date).diff(dayjs(today), 'day')
         if (diff >= 0 && diff < minDiff) {
           minDiff = diff
           nextHoliday = holiday
@@ -314,10 +343,14 @@ export const getHolidaytts = async () => {
 
       if (nextHoliday) {
         console.log('节假日API(Nager): 找到下个休息日', nextHoliday)
+        const greeting = getHolidayGreeting(nextHoliday.localName)
         if (minDiff === 0) {
-          data = `今天是 ${nextHoliday.localName}！`
+          data = `今天是 ${nextHoliday.localName}！${greeting}`
         } else {
           data = `距离 ${nextHoliday.localName} 还有 ${minDiff} 天`
+          if (minDiff <= 3 && greeting) {
+            data += `  ${greeting}`
+          }
         }
       }
     } else {
