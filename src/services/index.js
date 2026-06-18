@@ -1060,8 +1060,8 @@ export const getAggregatedData = async () => {
       { name: toLowerLine('poetryDynasty'), value: poetryDynasty, color: getColor() },
       { name: toLowerLine('poetryTitle'), value: poetryTitle, color: getColor() },
       { name: toLowerLine('courseSchedule'), value: courseSchedule, color: getColor() },
-      // 宝宝寄语（截断到 25 字，避免微信模板消息超长被截断）
-      { name: 'notice', value: (earthyLoveWords || noteCh || oneTalk || momentCopyrighting || '愿你每天都开心！').slice(0, 25), color: getColor() },
+      // 宝宝寄语（截断到 35 字，避免微信模板消息超长被截断）
+      { name: 'notice', value: (earthyLoveWords || noteCh || oneTalk || momentCopyrighting || '愿你每天都开心！').slice(0, 35), color: getColor() },
     ].concat(weatherMessage)
       .concat(constellationFortune)
       .concat(dateDiffParams)
