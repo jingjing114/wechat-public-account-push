@@ -249,13 +249,13 @@ export const getCIBA = async () => {
  * @returns
  */
 const HOLIDAY_GREETINGS = {
-  '元旦': '🎉 宝宝元旦快乐！',
-  '春节': '🎉 宝宝春节快乐！',
-  '清明节': '🌿 清明安康',
-  '劳动节': '🎉 劳动节快乐！',
-  '端午节': '🥟 宝宝端午安康！',
-  '中秋节': '🌙 宝宝中秋快乐！',
-  '国庆节': '🎊 国庆节快乐！',
+  '元旦': '🎉元旦快乐！',
+  '春节': '🎉春节快乐！',
+  '清明节': '🌿清明安康',
+  '劳动节': '🎉劳动节快乐！',
+  '端午节': '🥟端午安康！',
+  '中秋节': '🌙中秋快乐！',
+  '国庆节': '🎊国庆节快乐！',
 }
 
 /**
@@ -1060,8 +1060,8 @@ export const getAggregatedData = async () => {
       { name: toLowerLine('poetryDynasty'), value: poetryDynasty, color: getColor() },
       { name: toLowerLine('poetryTitle'), value: poetryTitle, color: getColor() },
       { name: toLowerLine('courseSchedule'), value: courseSchedule, color: getColor() },
-      // 宝宝寄语（使用土味情话 → 每日一言 → 金山词霸 依次填充）
-      { name: 'notice', value: earthyLoveWords || noteCh || oneTalk || momentCopyrighting || '愿你每天都开心！', color: getColor() },
+      // 宝宝寄语（截断到 25 字，避免微信模板消息超长被截断）
+      { name: 'notice', value: (earthyLoveWords || noteCh || oneTalk || momentCopyrighting || '愿你每天都开心！').slice(0, 25), color: getColor() },
     ].concat(weatherMessage)
       .concat(constellationFortune)
       .concat(dateDiffParams)
